@@ -5,8 +5,14 @@ var bodyParser = require('body-parser');
 //created instance of express allowing us to access it
 var app = express();
 
+//import router.js
+var router = require('./router');
+
 //unstingify incoming json requests
 app.use(bodyParser.json({type: '*/*'}));
+
+//call router function
+router(app);
 
 //define port on local machine
 var port = process.env.Port || 3000;
