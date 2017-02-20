@@ -1,0 +1,20 @@
+var express = require('express');
+var http = require('http');
+var bodyParser = require('body-parser');
+
+//created instance of express allowing us to access it
+var app = express();
+
+//unstingify incoming json requests
+app.use(bodyParser.json({type: '*/*'}));
+
+//define port on local machine
+var port = process.env.Port || 3000;
+
+//create node server and pass in express variable from above
+var server = http.createServer(app);
+
+//get server to listen for outside requests
+server.listen(port);
+console.log('Server listening on ' + port);
+
