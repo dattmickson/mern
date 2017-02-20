@@ -1,12 +1,19 @@
 var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 //created instance of express allowing us to access it
 var app = express();
 
 //import router.js
 var router = require('./router');
+
+//DB connection
+mongoose.connect('mongodb://localhost:bucket/bucket')
+
+
+//MIDDLEWARE
 
 //unstingify incoming json requests
 app.use(bodyParser.json({type: '*/*'}));
