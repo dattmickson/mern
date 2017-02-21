@@ -42,7 +42,9 @@ exports.signup = function(req, res, next){
 		});
 			//respond to request indicating the user was created
 
-	});
-	
-	
+	});	
+}
+
+exports.signin = function(req, res, next){
+	res.send({ token: createUserToken(req.user) });
 }
