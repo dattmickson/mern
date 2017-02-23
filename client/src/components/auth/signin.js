@@ -3,7 +3,7 @@ import { reduxForm } from 'redux-form';
  
 class Signin extends Component {
 	handleFormSubmit({ email, password }) {
-		console.log(email, passsword);
+		console.log(email, password);
 		//need to do something to log user in
 	}
 	render(){
