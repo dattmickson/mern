@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
+import { createPost } from '../../actions/index';
 import { Link } from 'react-router';
  
 class ListItem extends Component {
-	handleFormSubmit(fromProps) {
-		console.log(fromProps);
+	handleFormSubmit(formProps) {
+		this.props.createPost(formProps)
+
+		console.log(formProps);
 		//need to do something to log user in
 	}
 	render(){
@@ -26,7 +29,7 @@ class ListItem extends Component {
 				</fieldset>
 				<fieldset className="form-group">
 					<label>Content:</label>
-					<input type="text" {...content} className="form- text" rows="6"/>
+					<input type="text" {...content} className="form-control text" rows="6"/>
 				</fieldset>
 				<button action="submit" className="btn btn-primary">Submit</button>
 				<Link to='/' className='btn btn-danger'>Cancel</Link>
@@ -36,6 +39,6 @@ class ListItem extends Component {
 }
 
 export default reduxForm({
-	form: 'PostsNewItem',
+	form: 'PostsNewForm',
 	fields: ['title', 'category', 'url', 'content']
-})(ListItem);
+}, null, { createPost })(ListItem);

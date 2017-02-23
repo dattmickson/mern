@@ -15,7 +15,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
   		<Router history={browserHistory}>
   			<Route path="/" component={App}>
-  				<Route path="newitem" compontent ={ListItem} />
+  				<Route path="newitem" component ={ListItem} />
   				<Route path="signin" component={Signin} /> 
   				
   			</Route>
