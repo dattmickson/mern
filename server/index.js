@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cors = require('cors');
 
 //created instance of express allowing us to access it
 var app = express();
@@ -14,6 +15,9 @@ mongoose.connect('mongodb://localhost:bucket/bucket')
 
 
 //MIDDLEWARE
+
+//cors is Cross Origin Resource Sharing
+app.use(cors());
 
 //unstingify incoming json requests
 app.use(bodyParser.json({type: '*/*'}));
