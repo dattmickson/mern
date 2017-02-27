@@ -11,10 +11,10 @@ var requireSignin = passport.authenticate('local', {session: false});
 module.exports = function(app){
 	
 	//test
-	app.get('/', requireAuth, function(req, res){
-		res.send({message:'hey'});
-		//res.send({hi: 'there'});
-	});
+	// app.get('/', requireAuth, function(req, res){
+	// 	res.send({message:'hey'});
+	// 	//res.send({hi: 'there'});
+	// });
 
 
 	//express.get  for getting data 
@@ -25,4 +25,5 @@ module.exports = function(app){
 	app.post('/signup', Auth.signup);
 	app.post('/signin', requireSignin, Auth.signin);
 	app.post('/newitem', requireAuth, CookBook.addMeal);
+	app.get('/items', requireAuth, CookBook.fetchCookBook);
 }

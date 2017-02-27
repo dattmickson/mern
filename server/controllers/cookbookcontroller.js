@@ -8,7 +8,7 @@ exports.addMeal = function(req,res,next){
 	var url = req.body.props.url;
 	var ingredients = req.body.props.ingredients;
 	var directions = req.body.props.directions;
-	var specificUser = req.user;
+	var specificUser = req.user._id;
 
 	var cookBook = new Cookbook({
 		title: title,
@@ -23,4 +23,17 @@ exports.addMeal = function(req,res,next){
 		if(err) { return next(err); }
 		res.json(cookBook);
 	});
+}
+
+exports.fetchCookBook = function(req, res) {
+	var specificUser = req.user._id;
+	CookBook.find({specificUser: specificUser})
+	.then(
+		function fetchSuccess(data) {
+			res.json(data);
+		},
+		function fetchError(err) {
+			res.send(500, err.message);
+		}
+	);
 }
