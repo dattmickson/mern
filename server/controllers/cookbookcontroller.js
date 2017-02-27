@@ -37,3 +37,16 @@ exports.fetchCookBook = function(req, res) {
 		}
 	);
 }
+
+exports.deleteCookBook = function(req, res) {
+	var specificCookbook = req.params.id;
+	Cookbook.remove({_id: specificCookbook})
+	.then(
+		function deleteSuccess(data){
+			res.json(data);
+		},
+		function deleteError(err){
+			res.send(500, err.message);
+		}
+	);
+}
