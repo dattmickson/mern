@@ -11,6 +11,7 @@ import App from './components/app';
 import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
 import RequireAuth from './components/auth/require_auth';
+import ListShow from './components/list/list_items';
 
 import reducers from './reducers';
 
@@ -24,6 +25,7 @@ ReactDOM.render(
   				<Route path="signin" component={Signin} /> 
   				<Route path="signout" component={Signout} />
           <Route path="signup" component={Signup} />
+          <Route path="items" component={RequireAuth(ListShow)} />
   				
   			</Route>
   		</Router>

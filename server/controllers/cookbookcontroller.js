@@ -27,7 +27,7 @@ exports.addMeal = function(req,res,next){
 
 exports.fetchCookBook = function(req, res) {
 	var specificUser = req.user._id;
-	CookBook.find({specificUser: specificUser})
+	Cookbook.find({specificUser: specificUser})
 	.then(
 		function fetchSuccess(data) {
 			res.json(data);
