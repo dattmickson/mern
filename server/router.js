@@ -1,4 +1,6 @@
 var Auth = require('./controllers/auth');
+var CookBook = require('./controllers/cookbookcontroller');
+
 var passportService = require('./services/passport');
 var passport = require('passport');
 // var User = require('./models/user');
@@ -22,4 +24,5 @@ module.exports = function(app){
 	//next 		   promise for error handeling
 	app.post('/signup', Auth.signup);
 	app.post('/signin', requireSignin, Auth.signin);
+	app.post('/newitem', requireAuth, CookBook.addMeal);
 }

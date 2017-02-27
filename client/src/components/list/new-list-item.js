@@ -11,7 +11,7 @@ class ListItem extends Component {
 		//need to do something to log user in
 	}
 	render(){
-		const { fields: { title, category, url, content }, handleSubmit }=this.props;
+		const { fields: { title, category, url, ingredients, directions }, handleSubmit }=this.props;
 		return(
 			<form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 				<h3>Create a New Post</h3>
@@ -28,8 +28,12 @@ class ListItem extends Component {
 					<input type="text" {...url} className="form-control" />
 				</fieldset>
 				<fieldset className="form-group">
-					<label>Content:</label>
-					<input type="text" {...content} className="form-control text" rows="6"/>
+					<label>Ingredients:</label>
+					<input type="text" {...ingredients} className="form-control text" rows="6"/>
+				</fieldset>
+				<fieldset className="form-group">
+					<label>Directions:</label>
+					<input type="text" {...directions} className="form-control text" rows="6"/>
 				</fieldset>
 				<button action="submit" className="btn btn-primary">Submit</button>
 				<Link to='/' className='btn btn-danger'>Cancel</Link>
@@ -40,5 +44,5 @@ class ListItem extends Component {
 
 export default reduxForm({
 	form: 'PostsNewForm',
-	fields: ['title', 'category', 'url', 'content']
+	fields: ['title', 'category', 'url', 'ingredients', 'directions']
 }, null, { createPost })(ListItem);
