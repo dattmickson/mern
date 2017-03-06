@@ -25,6 +25,7 @@ module.exports = function(app){
 	app.post('/signup', Auth.signup);
 	app.post('/signin', requireSignin, Auth.signin);
 	app.post('/newitem', requireAuth, CookBook.addMeal);
-	app.get('/items', requireAuth, CookBook.fetchCookBook);
+	app.get('/items', requireAuth, CookBook.fetchCookBooks);
+	app.get('/items/:id', requireAuth, CookBook.fetchCookBook);
 	app.delete('/items/:id', requireAuth, CookBook.deleteCookBook);
 }

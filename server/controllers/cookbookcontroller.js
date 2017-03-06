@@ -25,7 +25,7 @@ exports.addMeal = function(req,res,next){
 	});
 }
 
-exports.fetchCookBook = function(req, res) {
+exports.fetchCookBooks = function(req, res) {
 	var specificUser = req.user._id;
 	Cookbook.find({specificUser: specificUser})
 	.then(
@@ -33,6 +33,19 @@ exports.fetchCookBook = function(req, res) {
 			res.json(data);
 		},
 		function fetchError(err) {
+			res.send(500, err.message);
+		}
+	);
+}
+
+exports.fetchCookBook = function(req, res){
+	var specificCookbook = req.params.id;
+	Cookbook.findOne({_id: specificCookbook})
+	.then(
+		function fetchSuccess(data){
+			res.json(data);
+		},
+		function fetchError(err){
 			res.send(500, err.message);
 		}
 	);
