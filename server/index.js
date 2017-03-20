@@ -11,7 +11,7 @@ var app = express();
 var router = require('./router');
 
 //DB connection
-mongoose.connect('mongodb://localhost:bucket/bucket')
+mongoose.connect('mongodb://admin:password@ds137040.mlab.com:37040/cooking-guide')
 
 
 //MIDDLEWARE

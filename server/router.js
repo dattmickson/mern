@@ -22,10 +22,10 @@ module.exports = function(app){
 	//req    	   argument that represents an incoming http request ex. where its from 
 	//res  		   represents the servers response to a users request
 	//next 		   promise for error handeling
-	app.post('/signup', Auth.signup);
-	app.post('/signin', requireSignin, Auth.signin);
-	app.post('/newitem', requireAuth, CookBook.addMeal);
-	app.get('/items', requireAuth, CookBook.fetchCookBooks);
-	app.get('/items/:id', requireAuth, CookBook.fetchCookBook);
-	app.delete('/items/:id', requireAuth, CookBook.deleteCookBook);
+	app.post('/api/signup', Auth.signup);
+	app.post('/api/signin', requireSignin, Auth.signin);
+	app.post('/api/newitem', requireAuth, CookBook.addMeal);
+	app.get('/api/items', requireAuth, CookBook.fetchCookBooks);
+	app.get('/api/items/:id', requireAuth, CookBook.fetchCookBook);
+	app.delete('/api/items/:id', requireAuth, CookBook.deleteCookBook);
 }
